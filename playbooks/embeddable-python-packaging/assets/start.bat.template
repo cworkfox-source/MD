@@ -1,0 +1,53 @@
+@echo off
+title My Tool
+
+:: Pin working directory to this bat file's own folder.
+:: This matters even if the main script anchors its own data-file paths,
+:: because it's a cheap second layer of safety against "launched from a
+:: different working directory" bugs.
+cd /d "%~dp0"
+
+:: Adjust these two paths to match your project's actual layout.
+set PYTHON_EXE=%~dp0python_embed\python.exe
+set SCRIPT_PATH=%~dp0src\main.py
+
+echo === My Tool ===
+echo.
+
+if not exist "%PYTHON_EXE%" (
+    echo [ERROR] python_embed folder is missing or incomplete.
+    pause
+    exit /b 1
+)
+
+if not exist "%SCRIPT_PATH%" (
+    echo [ERROR] Main script not found: %SCRIPT_PATH%
+    pause
+    exit /b 1
+)
+
+:: IMPORTANT: use python.exe here, not pythonw.exe.
+:: If the script calls input() or otherwise needs an interactive console,
+:: pythonw.exe (no console) will hang or fail silently.
+"%PYTHON_EXE%" "%SCRIPT_PATH%"
+
+if %errorlevel% neq 0 (
+    echo.
+    echo [INFO] Program exited with error code: %errorlevel%
+    pause
+)
+
+:: --------------------------------------------------------------------
+:: DO NOT add any non-ASCII characters (e.g. Chinese text) to this file,
+:: and do NOT add "chcp 65001". On systems whose default codepage is not
+:: UTF-8 (e.g. Traditional Chinese / Big5 Windows), a UTF-8-encoded .bat
+:: file containing non-ASCII text gets misparsed BEFORE "chcp 65001" has
+:: a chance to take effect, corrupting every subsequent line and making
+:: the whole batch file fail with garbled "not recognized as an internal
+:: or external command" errors. Keep this file pure ASCII; it will parse
+:: correctly under any system codepage, regardless of the user's Windows
+:: display language. The .bat FILE NAME itself can be non-ASCII (e.g.
+:: "start.bat" renamed to "啟動.bat") without any issue -- NTFS file
+:: names are Unicode-safe; only the file's internal text content must
+:: stay ASCII.
+:: --------------------------------------------------------------------
