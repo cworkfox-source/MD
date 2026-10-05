@@ -105,3 +105,5 @@ PASS (document review; no executable code in this repo)
 - Chore: 刪除 `playbooks/resurvey-source-files/scripts/__pycache__/read_resurvey.cpython-314.pyc`(編譯殘留,無任何文件引用)。驗證:全 repo grep 無殘留引用。
 
 - 2026-09-02 | Docs | 治理範本 v3.1→v3.2:Startup 改單一指令+回執、change_log 只讀 tail 30、AGENTS.md 去重、solo-small 一行文法、指標檔不重讀、playbooks 補絕對路徑;templates/log_rotation/project_status 同步,歷史未改 | verify: Startup 指令(bash)實跑 PASS、全 repo grep 無舊節名殘留、文件審閱
+- 2026-10-05 | Docs | 初始化本機 Git 儲存庫並連線至遠端 GitHub (https://github.com/cworkfox-source/MD.git)，推送 main 分支 | verify: git push -u origin main PASS
+

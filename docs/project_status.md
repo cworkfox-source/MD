@@ -1,11 +1,11 @@
 # Project Overview
 
 ## Current State TL;DR (max 5 lines — Startup reads ONLY this block)
-治理範本 v3.2:Startup 改為單一指令 + 回執行(Git Bash / PowerShell 兩版)、
-change_log 只讀最後 30 行、AGENTS.md 去重、solo-small 改一行文法、
-指標檔改為「已在 context 就不重讀」、playbooks 補範本 repo 絕對路徑。
+治理範本 v3.2: 已初始化本機 Git 並連線至 GitHub (cworkfox-source/MD)。
+Startup 改為單一指令 + 回執行(Git Bash / PowerShell 兩版)、
+change_log 只讀最後 30 行、AGENTS.md 去重、solo-small 改一行文法。
 已註冊 playbook 兩個(embeddable-python-packaging、resurvey-source-files)。
-無 blocker;下一步:在下游 repo 實跑一次驗證回執與工具呼叫次數。
+無 blocker;下一步: 在下游 repo 實跑一次驗證回執與工具呼叫次數。
 
 ## Current Version
 AGENTS.md governance template v3.2
