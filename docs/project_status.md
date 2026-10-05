@@ -1,14 +1,14 @@
 # Project Overview
 
 ## Current State TL;DR (max 5 lines — Startup reads ONLY this block)
-治理範本 v3.2: 已初始化本機 Git 並連線至 GitHub (cworkfox-source/MD)。
-Startup 改為單一指令 + 回執行(Git Bash / PowerShell 兩版)、
-change_log 只讀最後 30 行、AGENTS.md 去重、solo-small 改一行文法。
-已註冊 playbook 兩個(embeddable-python-packaging、resurvey-source-files)。
-無 blocker;下一步: 在下游 repo 實跑一次驗證回執與工具呼叫次數。
+治理範本 v3.3: 依 2026 研究與工具更新修訂(見 decision_log D-001)。
+新增 ENFORCE(規則需工具層把關)、負向約束寫法、Project Facts 只記不可推得事實、
+壓縮後重跑 Startup、完成前重讀 Boundaries;指標檔說明改為原生支援後的備援。
+待決:`.antigravity_rules.md` 是否刪除(Antigravity 1.20.3+ 已原生讀 AGENTS.md)。
+下一步: 在下游 repo 實跑一次驗證回執與工具呼叫次數。
 
 ## Current Version
-AGENTS.md governance template v3.2
+AGENTS.md governance template v3.3
 
 ## Project Goals
 Single source of truth for AI-agent governance rules (`AGENTS.md`), plus reusable
@@ -37,7 +37,9 @@ cross-project playbooks under `playbooks/`. Docs-only repo — no runnable code.
 (none)
 
 ## Known Issues
-(none)
+- `.antigravity_rules.md` is likely not loaded by Antigravity itself (it reads
+  `AGENTS.md` / `GEMINI.md` / `.agents/rules/*.md`); deletion awaits user approval
+  because `docs/spec.md` acceptance criterion 1 still names it.
 
 ## Technical Architecture
 Markdown documents only. `CLAUDE.md` / `.antigravity_rules.md` /

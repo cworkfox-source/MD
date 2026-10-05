@@ -107,3 +107,4 @@ PASS (document review; no executable code in this repo)
 - 2026-09-02 | Docs | 治理範本 v3.1→v3.2:Startup 改單一指令+回執、change_log 只讀 tail 30、AGENTS.md 去重、solo-small 一行文法、指標檔不重讀、playbooks 補絕對路徑;templates/log_rotation/project_status 同步,歷史未改 | verify: Startup 指令(bash)實跑 PASS、全 repo grep 無舊節名殘留、文件審閱
 - 2026-10-05 | Docs | 初始化本機 Git 儲存庫並連線至遠端 GitHub (https://github.com/cworkfox-source/MD.git)，推送 main 分支 | verify: git push -u origin main PASS
 
+- 2026-10-05 | Docs | 治理範本 v3.2→v3.3:依 2026 研究(ETH AGENTS.md 評估、Guardrails Beat Guidance、指令遵循因子實驗、雙 agent 消融、規則演化調查)與 Claude Code/Antigravity/Cursor 原生讀 AGENTS.md 更新,新增 ENFORCE、負向約束、Project Facts 內容規則、壓縮後重跑 Startup、完成前重讀 Boundaries;bootstrap 與 Cursor 指標同步;新增 D-001 | verify: Startup 指令實跑 PASS、AGENTS.md 行數檢查、文件審閱
