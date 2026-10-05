@@ -1,7 +1,8 @@
-# AGENTS.md — Universal AI Governance Template (v3.2)
+# AGENTS.md — Universal AI Governance Template (v3.3)
 
 Single source of truth for ALL AI coding agents (Claude Code, Antigravity, Codex, Cursor, ...).
-Tool-specific files (`CLAUDE.md`, `.antigravity_rules.md`, `.cursor/rules/*.mdc`) only point here.
+Most current agents read this file natively; tool-specific files (`CLAUDE.md` via `@AGENTS.md`,
+`.antigravity_rules.md`, `.cursor/rules/*.mdc`) only point here for older versions / other modes.
 Project-agnostic: copy into any repo unchanged; only "Project Profile" and "Project Facts"
 are filled per project.
 
@@ -14,6 +15,8 @@ are filled per project.
 
 **Bootstrap**: if this section is empty or `docs/spec.md` is missing, read `docs/bootstrap.md`
 and run it before anything else. Otherwise never open that file.
+**Content rule**: list only what an agent cannot infer by reading the repo (exact commands
+with flags, non-default tools, gotchas). No directory tours, overviews, or auto-generated text.
 
 <!-- FILLED BY AGENT DURING BOOTSTRAP. Update whenever it drifts from reality.
      This repo is the template's own home: blank this section when copying AGENTS.md elsewhere. -->
@@ -37,8 +40,11 @@ and run it before anything else. Otherwise never open that file.
   STOP and ask whether to update the spec first.
 - **ALWAYS**: after code changes, run the Test command from Project Facts;
   state clearly when a change was NOT verified.
+- **ENFORCE**: these rules are advisory text, and adherence fades as a session grows. In a
+  project, back any NEVER that must hold with the tool's own guard (permission deny list,
+  pre-tool hook, CI check) and name that guard in Project Facts.
 
-## Startup (once per session; re-run only if context was trimmed)
+## Startup (once per session; re-run after context was trimmed or compacted)
 
 Run ONE command and work from its output. Do NOT open these files with a file reader;
 do NOT read `docs/logs/`. Never infer project state from memory or chat history —
@@ -64,17 +70,22 @@ Then print exactly one line before starting the task:
 
 ## While Working
 
-- Prefer incremental changes over large refactors; verify structural changes against
-  `docs/decision_log.md` first.
-- Bug fix: find the root cause → fix → verify. The root cause goes into the change_log summary.
+- Do not refactor, reformat, or rename code unrelated to the task; keep changes incremental
+  and check structural changes against `docs/decision_log.md` first.
+- Do not patch symptoms: Bug fix = find the root cause → fix → verify. The root cause goes
+  into the change_log summary.
 - Refactor: confirm behavior is unchanged, assess compatibility/migration impact,
   record old vs. new design + risks (decision_log entry + change_log line).
-- Before solving a new class of problem from scratch, check Reusable Playbooks below.
+- Do not solve a new class of problem from scratch before checking Reusable Playbooks below.
+- When the user corrects the same agent mistake twice, propose ONE checkable negative rule
+  ("Do not …") for Boundaries or Project Facts; add it only after approval, replacing any
+  rule it contradicts. Rules say what must not happen, not general style advice.
 
 ## Completion (tiered by Project Profile → Scale)
 
 A task is NOT complete until its documentation tier is written. Any file created / deleted /
 renamed, feature added / removed, or API / DB / architecture change requires it. No exceptions.
+Before reporting done, re-read Boundaries and your Scale row below — do not rely on memory of them.
 
 | Scale | change_log | project_status | decision_log | End-of-task report |
 |---|---|---|---|---|

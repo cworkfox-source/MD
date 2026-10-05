@@ -33,6 +33,9 @@ show it to the user for confirmation, and only proceed after confirmation.
 2. Fill in the "Project Facts" section of `AGENTS.md` from the spec and the actual codebase.
    **Verify every command by actually running it. Record the full command WITH flags**
    (e.g. `pytest tests/test_scraper.py -v`, not just `pytest`). Never guess.
+   Record only what an agent cannot infer by reading the repo. Do not paste directory
+   tours, architecture overviews, or `/init`-style auto-generated summaries — 2026
+   studies measured these lowering task success while raising cost by 20%+.
 3. If a command cannot be determined or verified, ASK the user — never invent facts.
 4. Create `docs/project_status.md`, `docs/change_log.md`, `docs/decision_log.md`
    from `docs/templates.md` if missing, and log the initialization in the change log.

@@ -7,10 +7,10 @@ alwaysApply: true
 # Cursor entry point → AGENTS.md
 
 `AGENTS.md` at the repo root is the single source of truth for every AI agent here.
-This file adds no rules; it exists only because Cursor Chat / Composer modes load
-`.cursor/rules/*.mdc` but not `AGENTS.md`.
+This file adds no rules; it is a fallback for Cursor versions or modes that do not
+auto-load `AGENTS.md`.
 
-1. If `AGENTS.md` is not already in your context (Agent mode loads it automatically),
+1. If `AGENTS.md` is not already in your context (current Cursor loads it automatically),
    read it in full. If it is missing, STOP and tell the user — do not improvise.
 2. Run its **Startup** section literally (one command, one receipt line), then follow
    it — Boundaries still apply in auto-run / YOLO terminal mode, and the task ends with
