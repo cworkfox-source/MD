@@ -121,7 +121,7 @@ originals; one file per calendar year; never loaded at Startup.
 ## Template: docs/decision_log.md
 
 ```markdown
-## Decision ID — <short title (Startup reads titles only)>
+## D-NNN — <short title (Startup reads titles only)>
 
 ### Date
 ### Topic

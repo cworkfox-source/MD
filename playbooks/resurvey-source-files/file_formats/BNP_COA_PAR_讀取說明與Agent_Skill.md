@@ -4,7 +4,7 @@ name: taiwan-cadastral-bnp-coa-par-parser
 description: Parse and reconstruct Taiwan land cadastral files (BNP boundary sequence, COA boundary coordinates, and PAR parcel attributes) into WKT, GeoJSON, and database-ready structures.
 ---
 
-# 台灣地籍圖資格式（BNP/COA/PAR）解析與重構規範 (AI Agent & 開發者通用指南)
+## 台灣地籍圖資格式（BNP/COA/PAR）解析與重構規範 (AI Agent & 開發者通用指南)
 
 本文件定義了台灣地政司「圖解區」與「數值區」原始地籍圖資檔案（BNP、COA、PAR）的讀取與多邊形重構邏輯。任何開發程式或 AI 代理人 (Coding Agent) 只要遵循本指南，皆能準確解析此三種檔案並還原出封閉多邊形。
 
@@ -130,7 +130,7 @@ class BnpCoaParParser:
                     clean = t.replace('+', '').replace('-', '')
                     if clean: parsed.append({'id': f"{self.section_id}_{clean}"})
             temp.setdefault((raw_m, raw_c), []).append((seq, parsed))
-        
+
         for (m, c), rows in temp.items():
             rows.sort(key=lambda r: r[0])
             pts = []
@@ -201,13 +201,13 @@ class BnpCoaParParser:
         if ang_start < 0: ang_start += 2 * math.pi
         if ang_mid < 0: ang_mid += 2 * math.pi
         if ang_end < 0: ang_end += 2 * math.pi
-        
+
         def interp(a1, a2, n):
             diff = a2 - a1
             if diff > math.pi: diff -= 2 * math.pi
             elif diff < -math.pi: diff += 2 * math.pi
             return [(center[0] + radius * math.cos(a1 + diff * (i/n)), center[1] + radius * math.sin(a1 + diff * (i/n))) for i in range(1, n + 1)]
-            
+
         pts = []
         pts.extend(interp(ang_start, ang_mid, max(1, steps // 2)))
         pts.extend(interp(ang_mid, ang_end, max(1, steps // 2)))

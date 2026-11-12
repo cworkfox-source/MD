@@ -4,7 +4,7 @@
 治理範本 v3.3: 依 2026 研究與工具更新修訂(見 decision_log D-001)。
 新增 ENFORCE(規則需工具層把關)、負向約束寫法、Project Facts 只記不可推得事實、
 壓縮後重跑 Startup、完成前重讀 Boundaries;指標檔說明改為原生支援後的備援。
-待決:`.antigravity_rules.md` 是否刪除(Antigravity 1.20.3+ 已原生讀 AGENTS.md)。
+待決:`.antigravity_rules.md` 是否刪除;AGENTS.md playbooks 絕對路徑含個人帳號名;BNP_COA_PAR 中文檔名是否改名。
 下一步: 在下游 repo 實跑一次驗證回執與工具呼叫次數。
 
 ## Current Version
