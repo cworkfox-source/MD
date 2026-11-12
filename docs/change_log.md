@@ -108,3 +108,4 @@ PASS (document review; no executable code in this repo)
 - 2026-10-05 | Docs | 初始化本機 Git 儲存庫並連線至遠端 GitHub (https://github.com/cworkfox-source/MD.git)，推送 main 分支 | verify: git push -u origin main PASS
 
 - 2026-10-05 | Docs | 治理範本 v3.2→v3.3:依 2026 研究(ETH AGENTS.md 評估、Guardrails Beat Guidance、指令遵循因子實驗、雙 agent 消融、規則演化調查)與 Claude Code/Antigravity/Cursor 原生讀 AGENTS.md 更新,新增 ENFORCE、負向約束、Project Facts 內容規則、壓縮後重跑 Startup、完成前重讀 Boundaries;bootstrap 與 Cursor 指標同步;新增 D-001 | verify: Startup 指令實跑 PASS、AGENTS.md 行數檢查、文件審閱
+- 2026-11-12 | Docs | 格式檢查後修正:AGENTS.md 歸檔路徑改 `docs/logs/change_log_<year>.md` 與 log_rotation/templates 一致、回執改 `decisions: <N>`;templates 決策標題範本改 `## D-NNN —`;BNP_COA_PAR 說明檔第二個 H1 降為 H2 並清行尾空白;B10.md 去檔尾多餘空行 | verify: grep 無舊字串殘留、Startup 指令實跑 PASS、git diff 審閱

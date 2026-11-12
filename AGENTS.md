@@ -60,13 +60,13 @@ gc docs/project_status.md -TotalCount 10; '---'; (sls '^## ' docs/decision_log.m
 ```
 
 Then print exactly one line before starting the task:
-`Startup OK | status: <first sentence of TL;DR> | decisions: <N titles> | change_log: <L> lines`
+`Startup OK | status: <first sentence of TL;DR> | decisions: <N> | change_log: <L> lines`
 
 - L > 400 → read `docs/log_rotation.md` and run it before the task (the only time to open it).
 - Any of the four docs missing → create it from `docs/templates.md` (the only time to open it).
 - Open a full `decision_log.md` entry only when the task touches that area; never undo a
   recorded decision. History older than the last 30 lines → `grep` the active change_log
-  by keyword; open `docs/logs/<year>.md` only if the task explicitly needs it.
+  by keyword; open `docs/logs/change_log_<year>.md` only if the task explicitly needs it.
 
 ## While Working
 
